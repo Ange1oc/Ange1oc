@@ -1,0 +1,225 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 280" width="900" height="280" role="img" aria-label="Котик в наушниках вайбит и программирует">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#11111b"/>
+      <stop offset="0.6" stop-color="#1e1b3a"/>
+      <stop offset="1" stop-color="#2b1f45"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#89b4fa" stop-opacity="0.3"/>
+      <stop offset="1" stop-color="#89b4fa" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="moonGlow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#f9e2af" stop-opacity="0.25"/>
+      <stop offset="1" stop-color="#f9e2af" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="iris" cx="0.5" cy="0.75" r="0.6">
+      <stop offset="0" stop-color="#7f6bc4"/>
+      <stop offset="1" stop-color="#241d36"/>
+    </radialGradient>
+    <clipPath id="screen"><rect x="397" y="76" width="176" height="104" rx="6"/></clipPath>
+    <clipPath id="card"><rect width="900" height="280" rx="20"/></clipPath>
+  </defs>
+
+  <style>
+    .star { fill: #f5e0dc; animation: twinkle 3s ease-in-out infinite; }
+    @keyframes twinkle { 0%,100% { opacity: .15 } 50% { opacity: 1 } }
+
+    .shoot { stroke: #f5e0dc; stroke-width: 2; stroke-linecap: round; opacity: 0; animation: shoot 9s linear infinite; }
+    @keyframes shoot { 0%,88% { opacity: 0; transform: translate(0,0) } 90% { opacity: 1 } 100% { opacity: 0; transform: translate(-160px,80px) } }
+
+    /* кот вайбит под музыку */
+    .vibe { transform-origin: 235px 190px; animation: vibe .9s ease-in-out infinite alternate; }
+    @keyframes vibe { from { transform: rotate(-5deg) } to { transform: rotate(5deg) } }
+    .squish { transform-origin: 235px 245px; animation: squish .45s ease-in-out infinite alternate; }
+    @keyframes squish { from { transform: scale(1,1) } to { transform: scale(1.025,.97) } }
+
+    .tail { transform-origin: 300px 228px; animation: tail 1.8s ease-in-out infinite alternate; }
+    @keyframes tail { from { transform: rotate(-8deg) } to { transform: rotate(16deg) } }
+
+    .eye { transform-box: fill-box; transform-origin: center; animation: blink 4.5s infinite; }
+    @keyframes blink { 0%,90%,100% { transform: scaleY(1) } 94% { transform: scaleY(.08) } }
+
+    .earL { transform-origin: 196px 92px; animation: twitch 6s infinite; }
+    @keyframes twitch { 0%,78%,84%,100% { transform: rotate(0) } 81% { transform: rotate(-14deg) } }
+
+    .pawL, .pawR { animation: tap .28s ease-in-out infinite alternate; }
+    .pawR { animation-delay: .14s; }
+    @keyframes tap { from { transform: translateY(0) } to { transform: translateY(-7px) } }
+
+    .note { font: 700 22px "Segoe UI Symbol", "Noto Sans Symbols", sans-serif; opacity: 0; animation: note 3s ease-out infinite; }
+    @keyframes note { 0% { opacity: 0; transform: translate(0,0) rotate(0) } 15% { opacity: 1 } 100% { opacity: 0; transform: translate(var(--dx),-70px) rotate(18deg) } }
+
+    .spark { fill: #f9e2af; transform-box: fill-box; transform-origin: center; animation: spark 2.4s ease-in-out infinite; }
+    @keyframes spark { 0%,100% { opacity: 0; transform: scale(.3) } 50% { opacity: 1; transform: scale(1) } }
+
+    .line { transform-box: fill-box; transform-origin: left; animation: type 6s steps(14) infinite; }
+    @keyframes type { 0% { transform: scaleX(0) } 55%,100% { transform: scaleX(1) } }
+    .l2 { animation-delay: .5s } .l3 { animation-delay: 1s } .l4 { animation-delay: 1.5s } .l5 { animation-delay: 2s }
+
+    .ok { opacity: 0; animation: ok 6s steps(1) infinite; }
+    @keyframes ok { 0%,60% { opacity: 0 } 61%,100% { opacity: 1 } }
+
+    .cursor { animation: cursor 1s steps(1) infinite; }
+    @keyframes cursor { 50% { opacity: 0 } }
+
+    .steam { fill: none; stroke: #a6adc8; stroke-width: 3; stroke-linecap: round; opacity: 0; animation: steam 3s ease-out infinite; }
+    @keyframes steam { 0% { opacity: 0; transform: translateY(6px) } 30% { opacity: .6 } 100% { opacity: 0; transform: translateY(-18px) } }
+
+    .bubble { opacity: 0; animation: bubble 8s ease-in-out infinite; }
+    @keyframes bubble { 0%,60% { opacity: 0; transform: translateY(8px) } 66%,88% { opacity: 1; transform: translateY(0) } 95%,100% { opacity: 0; transform: translateY(-6px) } }
+
+    .title { font: 700 44px ui-monospace, "JetBrains Mono", "Cascadia Code", Consolas, monospace; fill: #cdd6f4; }
+    .sub { font: 500 15px ui-monospace, "JetBrains Mono", "Cascadia Code", Consolas, monospace; fill: #a6adc8; }
+    .mono { font: 600 10px ui-monospace, "JetBrains Mono", Consolas, monospace; }
+  </style>
+
+  <g clip-path="url(#card)">
+    <rect width="900" height="280" fill="url(#sky)"/>
+
+    <!-- звёзды -->
+    <circle class="star" cx="40" cy="36" r="1.6"/>
+    <circle class="star" cx="120" cy="20" r="1.2" style="animation-delay:.7s"/>
+    <circle class="star" cx="330" cy="30" r="1.8" style="animation-delay:1.4s"/>
+    <circle class="star" cx="380" cy="20" r="1.2" style="animation-delay:.3s"/>
+    <circle class="star" cx="450" cy="40" r="1.5" style="animation-delay:2.1s"/>
+    <circle class="star" cx="540" cy="16" r="1.3" style="animation-delay:1s"/>
+    <circle class="star" cx="620" cy="34" r="1.8" style="animation-delay:2.6s"/>
+    <circle class="star" cx="700" cy="70" r="1.2" style="animation-delay:.4s"/>
+    <circle class="star" cx="750" cy="18" r="1.5" style="animation-delay:1.8s"/>
+    <circle class="star" cx="875" cy="130" r="1.3" style="animation-delay:.9s"/>
+    <circle class="star" cx="30" cy="140" r="1.2" style="animation-delay:2.8s"/>
+    <circle class="star" cx="100" cy="90" r="1.4" style="animation-delay:1.6s"/>
+    <line class="shoot" x1="700" y1="30" x2="730" y2="15"/>
+
+    <!-- луна -->
+    <circle cx="830" cy="58" r="70" fill="url(#moonGlow)"/>
+    <circle cx="830" cy="58" r="26" fill="#f9e2af"/>
+    <circle cx="820" cy="50" r="5" fill="#e5c890" opacity=".6"/>
+    <circle cx="838" cy="68" r="3.5" fill="#e5c890" opacity=".6"/>
+    <circle cx="841" cy="47" r="2.5" fill="#e5c890" opacity=".6"/>
+
+    <!-- текст -->
+    <text class="title" x="626" y="138">Ange1oc</text>
+    <rect class="cursor" x="816" y="105" width="18" height="38" fill="#f5a97f"/>
+    <text class="sub" x="628" y="168">backend · devops · ml</text>
+    <text class="sub" x="628" y="192" style="fill:#f5a97f">📸 создаю photoflash.by</text>
+    <text class="sub" x="628" y="216" style="fill:#6c7086">// кот одобряет каждый деплой</text>
+
+    <!-- стол -->
+    <rect x="0" y="240" width="900" height="40" fill="#181825"/>
+    <rect x="0" y="238" width="900" height="4" fill="#313244"/>
+
+    <!-- кружка -->
+    <path class="steam" d="M62 200 q-6 -8 0 -16 q6 -8 0 -16"/>
+    <path class="steam" d="M76 202 q-6 -8 0 -16 q6 -8 0 -16" style="animation-delay:1.2s"/>
+    <rect x="52" y="206" width="36" height="32" rx="7" fill="#f38ba8"/>
+    <path d="M88 213 a9 9 0 0 1 0 18" fill="none" stroke="#f38ba8" stroke-width="5"/>
+    <text class="mono" x="57" y="227" style="fill:#1e1e2e">=^.^=</text>
+
+    <!-- монитор -->
+    <ellipse cx="485" cy="140" rx="140" ry="100" fill="url(#glow)"/>
+    <rect x="387" y="66" width="196" height="124" rx="10" fill="#313244"/>
+    <rect x="397" y="76" width="176" height="104" rx="6" fill="#1e1e2e"/>
+    <g clip-path="url(#screen)">
+      <circle cx="406" cy="84" r="2.5" fill="#f38ba8"/>
+      <circle cx="414" cy="84" r="2.5" fill="#f9e2af"/>
+      <circle cx="422" cy="84" r="2.5" fill="#a6e3a1"/>
+      <rect class="line" x="405" y="96" width="110" height="6" rx="3" fill="#cba6f7"/>
+      <rect class="line l2" x="417" y="108" width="80" height="6" rx="3" fill="#89b4fa"/>
+      <rect class="line l3" x="417" y="120" width="130" height="6" rx="3" fill="#a6e3a1"/>
+      <rect class="line l4" x="429" y="132" width="64" height="6" rx="3" fill="#f9e2af"/>
+      <rect class="line l5" x="405" y="144" width="96" height="6" rx="3" fill="#94e2d5"/>
+      <text class="mono ok" x="405" y="171" style="fill:#a6e3a1">$ deploy … ok ✓</text>
+    </g>
+    <rect x="472" y="190" width="26" height="36" fill="#45475a"/>
+    <rect x="444" y="224" width="82" height="14" rx="7" fill="#45475a"/>
+
+    <!-- искорки -->
+    <path class="spark" d="M140 70 l3 8 l8 3 l-8 3 l-3 8 l-3 -8 l-8 -3 l8 -3z"/>
+    <path class="spark" d="M340 60 l2 6 l6 2 l-6 2 l-2 6 l-2 -6 l-6 -2 l6 -2z" style="animation-delay:.8s"/>
+    <path class="spark" d="M120 170 l2 5 l5 2 l-5 2 l-2 5 l-2 -5 l-5 -2 l5 -2z" style="animation-delay:1.6s"/>
+
+    <!-- ноты из наушников -->
+    <text class="note" x="140" y="120" style="fill:#cba6f7;--dx:-24px">♪</text>
+    <text class="note" x="318" y="116" style="fill:#f5c2e7;--dx:20px;animation-delay:1s">♫</text>
+    <text class="note" x="150" y="110" style="fill:#89dceb;--dx:-14px;animation-delay:2s">♪</text>
+    <text class="note" x="312" y="124" style="fill:#f9e2af;--dx:28px;animation-delay:1.6s">♪</text>
+
+    <!-- КОТ -->
+    <g class="squish">
+      <!-- хвост -->
+      <path class="tail" d="M300 228 C 352 228, 366 186, 344 162 C 334 152, 318 160, 326 172" fill="none" stroke="#f5a97f" stroke-width="15" stroke-linecap="round"/>
+      <!-- тельце-булочка -->
+      <rect x="158" y="146" width="154" height="96" rx="56" fill="#f5a97f"/>
+      <ellipse cx="235" cy="206" rx="46" ry="32" fill="#fde2c8"/>
+
+      <!-- голова -->
+      <g class="vibe">
+        <g class="earL">
+          <path d="M166 110 Q156 46 214 74 Z" fill="#f5a97f"/>
+          <path d="M175 99 Q170 64 204 80 Z" fill="#f5c2e7"/>
+        </g>
+        <path d="M304 110 Q314 46 256 74 Z" fill="#f5a97f"/>
+        <path d="M295 99 Q300 64 266 80 Z" fill="#f5c2e7"/>
+        <ellipse cx="235" cy="120" rx="78" ry="58" fill="#f5a97f"/>
+        <path d="M225 66 q-2 8 0 14 M235 64 v16 M245 66 q2 8 0 14" fill="none" stroke="#e08a5f" stroke-width="5" stroke-linecap="round"/>
+        <path d="M159 116 q10 2 16 8 M311 116 q-10 2 -16 8" fill="none" stroke="#e08a5f" stroke-width="4" stroke-linecap="round"/>
+
+        <!-- наушники -->
+        <path d="M168 112 C 160 30, 310 30, 302 112" fill="none" stroke="#cba6f7" stroke-width="10" stroke-linecap="round"/>
+        <rect x="146" y="96" width="26" height="44" rx="12" fill="#cba6f7"/>
+        <rect x="152" y="104" width="12" height="28" rx="6" fill="#f5c2e7"/>
+        <rect x="298" y="96" width="26" height="44" rx="12" fill="#cba6f7"/>
+        <rect x="306" y="104" width="12" height="28" rx="6" fill="#f5c2e7"/>
+
+        <!-- глазки -->
+        <g class="eye">
+          <ellipse cx="206" cy="122" rx="14" ry="16" fill="url(#iris)"/>
+          <circle cx="201" cy="115" r="5.5" fill="#fff"/>
+          <circle cx="211" cy="129" r="2.4" fill="#fff"/>
+        </g>
+        <g class="eye">
+          <ellipse cx="264" cy="122" rx="14" ry="16" fill="url(#iris)"/>
+          <circle cx="259" cy="115" r="5.5" fill="#fff"/>
+          <circle cx="269" cy="129" r="2.4" fill="#fff"/>
+        </g>
+
+        <!-- щёчки -->
+        <ellipse cx="184" cy="146" rx="12" ry="6.5" fill="#f38ba8" opacity=".55"/>
+        <ellipse cx="286" cy="146" rx="12" ry="6.5" fill="#f38ba8" opacity=".55"/>
+        <path d="M178 145 l3 -4 M184 145 l3 -4 M190 145 l3 -4 M280 145 l3 -4 M286 145 l3 -4 M292 145 l3 -4" stroke="#e5788f" stroke-width="1.6" stroke-linecap="round"/>
+
+        <!-- носик и ротик -->
+        <path d="M230 136 h10 l-5 5.5 z" fill="#f38ba8"/>
+        <path d="M225 143 q5 7 10 0 q5 7 10 0" fill="none" stroke="#2a2238" stroke-width="2.4" stroke-linecap="round"/>
+
+        <!-- усики -->
+        <path d="M172 134 l-22 -4 M172 141 l-22 2 M298 134 l22 -4 M298 141 l22 2" stroke="#fde2c8" stroke-width="2" stroke-linecap="round"/>
+      </g>
+    </g>
+
+    <!-- клавиатура и лапки -->
+    <rect x="168" y="226" width="136" height="14" rx="4" fill="#45475a"/>
+    <path d="M176 231 h120" stroke="#6c7086" stroke-width="3" stroke-dasharray="8 4" stroke-linecap="round"/>
+    <g class="pawL">
+      <ellipse cx="208" cy="226" rx="17" ry="11" fill="#f5a97f"/>
+      <circle cx="201" cy="222" r="2.3" fill="#f5c2e7"/>
+      <circle cx="208" cy="220" r="2.3" fill="#f5c2e7"/>
+      <circle cx="215" cy="222" r="2.3" fill="#f5c2e7"/>
+    </g>
+    <g class="pawR">
+      <ellipse cx="262" cy="226" rx="17" ry="11" fill="#f5a97f"/>
+      <circle cx="255" cy="222" r="2.3" fill="#f5c2e7"/>
+      <circle cx="262" cy="220" r="2.3" fill="#f5c2e7"/>
+      <circle cx="269" cy="222" r="2.3" fill="#f5c2e7"/>
+    </g>
+
+    <!-- облачко -->
+    <g class="bubble">
+      <rect x="300" y="30" width="72" height="30" rx="15" fill="#cdd6f4"/>
+      <path d="M312 58 l-8 12 l16 -10 z" fill="#cdd6f4"/>
+      <text x="313" y="50" style="font:700 14px ui-monospace,Consolas,monospace;fill:#1e1e2e">мррр~</text>
+    </g>
+  </g>
+</svg>
