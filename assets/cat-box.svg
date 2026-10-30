@@ -1,0 +1,121 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 140" width="900" height="140" role="img" aria-label="Котик в коробке следит за бабочкой">
+  <defs>
+    <radialGradient id="iris" cx="0.5" cy="0.75" r="0.6">
+      <stop offset="0" stop-color="#7f6bc4"/>
+      <stop offset="1" stop-color="#241d36"/>
+    </radialGradient>
+  </defs>
+  <style>
+    /* бабочка летает туда-обратно, всё синхронизировано на 8s */
+    .fly { animation: fly 8s ease-in-out infinite; }
+    @keyframes fly {
+      0%    { transform: translate(80px, 50px) }
+      12.5% { transform: translate(260px, 20px) }
+      25%   { transform: translate(450px, 30px) }
+      37.5% { transform: translate(640px, 14px) }
+      50%   { transform: translate(820px, 46px) }
+      62.5% { transform: translate(640px, 22px) }
+      75%   { transform: translate(450px, 28px) }
+      87.5% { transform: translate(260px, 12px) }
+      100%  { transform: translate(80px, 50px) }
+    }
+    .flipper { animation: flip 8s steps(1) infinite; }
+    @keyframes flip { 0% { transform: scaleX(1) } 50% { transform: scaleX(-1) } }
+    .wing { transform-origin: 0 0; animation: flap .16s ease-in-out infinite alternate; }
+    @keyframes flap { from { transform: scaleX(1) } to { transform: scaleX(.25) } }
+
+    /* глазки и голова следят за бабочкой */
+    .pupil { animation: watch 8s ease-in-out infinite; }
+    @keyframes watch {
+      0%,100% { transform: translate(-6px, 0) }
+      12.5%,87.5% { transform: translate(-3px, -3px) }
+      25%,75% { transform: translate(0, -4px) }
+      37.5%,62.5% { transform: translate(3px, -3px) }
+      50% { transform: translate(6px, 0) }
+    }
+    .head { transform-origin: 450px 130px; animation: tilt 8s ease-in-out infinite; }
+    @keyframes tilt {
+      0%,100% { transform: rotate(-9deg) }
+      25%,75% { transform: rotate(0) }
+      50% { transform: rotate(9deg) }
+    }
+
+    /* когда бабочка над котом — лапка «хвать!» */
+    .swipe { transform-origin: 488px 104px; animation: swipe 8s ease-in-out infinite; }
+    @keyframes swipe {
+      0%,20%,30%,70%,80%,100% { transform: translateY(0) rotate(0) }
+      24%,26%,74%,76% { transform: translateY(-34px) rotate(-18deg) }
+    }
+    .bang { opacity: 0; animation: bang 8s ease-in-out infinite; }
+    @keyframes bang { 0%,19%,31%,69%,81%,100% { opacity: 0 } 22%,28%,72%,78% { opacity: 1 } }
+
+    .ear { transform-origin: 418px 60px; animation: twitch 4s infinite; }
+    @keyframes twitch { 0%,70%,76%,100% { transform: rotate(0) } 73% { transform: rotate(-14deg) } }
+    .tail { transform-origin: 534px 116px; animation: wag 1.2s ease-in-out infinite alternate; }
+    @keyframes wag { from { transform: rotate(-12deg) } to { transform: rotate(12deg) } }
+  </style>
+
+  <!-- хвост торчит из коробки -->
+  <path class="tail" d="M534 116 C 566 108, 572 78, 556 62 C 548 54, 538 62, 546 70" fill="none" stroke="#f5a97f" stroke-width="11" stroke-linecap="round"/>
+
+  <!-- голова -->
+  <g class="head">
+    <g class="ear">
+      <path d="M396 92 Q388 40 432 62 Z" fill="#f5a97f"/>
+      <path d="M403 84 Q400 56 425 67 Z" fill="#f5c2e7"/>
+    </g>
+    <path d="M504 92 Q512 40 468 62 Z" fill="#f5a97f"/>
+    <path d="M497 84 Q500 56 475 67 Z" fill="#f5c2e7"/>
+    <ellipse cx="450" cy="104" rx="62" ry="46" fill="#f5a97f"/>
+    <path d="M442 60 v10 M450 59 v12 M458 60 v10" stroke="#e08a5f" stroke-width="4" stroke-linecap="round"/>
+    <!-- глаза -->
+    <ellipse cx="428" cy="96" rx="12" ry="14" fill="url(#iris)"/>
+    <ellipse cx="472" cy="96" rx="12" ry="14" fill="url(#iris)"/>
+    <g class="pupil">
+      <circle cx="425" cy="91" r="4.5" fill="#fff"/>
+      <circle cx="431" cy="101" r="2" fill="#fff"/>
+      <circle cx="469" cy="91" r="4.5" fill="#fff"/>
+      <circle cx="475" cy="101" r="2" fill="#fff"/>
+    </g>
+    <ellipse cx="410" cy="114" rx="9" ry="5" fill="#f38ba8" opacity=".55"/>
+    <ellipse cx="490" cy="114" rx="9" ry="5" fill="#f38ba8" opacity=".55"/>
+    <path d="M446 108 h8 l-4 4.5 z" fill="#f38ba8"/>
+    <path d="M442 114 q4 5 8 0 q4 5 8 0" fill="none" stroke="#2a2238" stroke-width="2" stroke-linecap="round"/>
+  </g>
+
+  <!-- «!» -->
+  <text class="bang" x="512" y="40" style="font:900 26px ui-monospace,Consolas,monospace;fill:#f38ba8">!</text>
+
+  <!-- коробка -->
+  <path d="M350 108 L374 118 L374 140 L350 140 Z" fill="#c08552"/>
+  <path d="M550 108 L526 118 L526 140 L550 140 Z" fill="#c08552"/>
+  <rect x="374" y="116" width="152" height="24" fill="#d9a066"/>
+  <path d="M374 116 L340 100 L360 96 L392 116 Z" fill="#e8b67c"/>
+  <path d="M526 116 L560 100 L540 96 L508 116 Z" fill="#e8b67c"/>
+  <text x="418" y="134" style="font:700 11px ui-monospace,Consolas,monospace;fill:#8a5a2b">FRAGILE ♥</text>
+
+  <!-- лапки на краю коробки -->
+  <ellipse cx="420" cy="116" rx="13" ry="8" fill="#f5a97f"/>
+  <g class="swipe">
+    <ellipse cx="480" cy="116" rx="13" ry="8" fill="#f5a97f"/>
+    <circle cx="474" cy="113" r="2" fill="#f5c2e7"/>
+    <circle cx="480" cy="111.5" r="2" fill="#f5c2e7"/>
+    <circle cx="486" cy="113" r="2" fill="#f5c2e7"/>
+  </g>
+
+  <!-- бабочка -->
+  <g class="fly">
+    <g class="flipper">
+      <path d="M0 0 C -2 -10, -2 10, 0 10" stroke="#45475a" stroke-width="3" stroke-linecap="round" fill="none"/>
+      <path d="M0 -1 l-4 -8 M0 -1 l4 -8" stroke="#45475a" stroke-width="1.5" stroke-linecap="round"/>
+      <g class="wing">
+        <ellipse cx="9" cy="-2" rx="10" ry="8" fill="#cba6f7"/>
+        <ellipse cx="7" cy="8" rx="6" ry="5" fill="#f5c2e7"/>
+      </g>
+      <g class="wing" style="animation-delay:.08s">
+        <ellipse cx="-9" cy="-2" rx="10" ry="8" fill="#cba6f7" opacity=".85"/>
+        <ellipse cx="-7" cy="8" rx="6" ry="5" fill="#f5c2e7" opacity=".85"/>
+      </g>
+    </g>
+  </g>
+</svg>
