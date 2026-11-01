@@ -27,7 +27,7 @@
 
 ```python
 class Ange1oc(Cat):
-    experience = "6 years 9 months"
+    experience = "6 years 10 months"
     role = "Software Engineer"
     founder = "PhotoFlash.by"
 
